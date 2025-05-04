@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Challenges</title>
+  <link rel="stylesheet" type="text/css" href="challenges.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    .challenges {
+      text-align: center;
+      padding: 50px;
+    }
+    .challenge {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: 20px;
+      display: inline-block;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    }
+    .challenge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .challenge img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .btn {
+      display: inline-block;
+      background: #ff5733;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #ff2e00;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="challenges">
+      <h1>Challenges</h1>
+
+      <div class="challenge fade-in">
+        <div class="challenge-content">
+          <h2>30-Day Plank Challenge</h2>
+          <p>Are you ready to strengthen your core? Join our 30-Day Plank Challenge and see amazing results!</p>
+          <img src="images/plank.jpg" alt="Plank Challenge">
+          <a href="https://www.myprotein.co.in/blog/training/can-you-take-on-this-30-day-plank-challenge/" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="challenge fade-in">
+        <div class="challenge-content">
+          <h2>10K Running Challenge</h2>
+          <p>Take your running to the next level with our 10K Running Challenge. Train and complete a 10K race like a pro!</p>
+          <img src="images/running.jpg" alt="Running Challenge">
+          <a href="https://marathonhandbook.com/30-day-running-challenge-for-beginners/" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="challenge fade-in">
+        <div class="challenge-content">
+          <h2>Yoga Challenge</h2>
+          <p>Improve your flexibility and find inner peace with our Yoga Challenge. Discover different yoga poses and their benefits!</p>
+          <img src="images/yoga.jpg" alt="Yoga Challenge">
+          <a href="https://alison.com/course/yoga-exercises-for-core-strength-and-flexibility-revised?utm_source=bing&utm_medium=cpc&utm_
+          campaign=530823755&utm_content=1361197898870716&utm_term=kwd-85076001026226:loc-91&msclkid=e61c9467a8251c19523ff3891a6b2171" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.challenge').each(function(index) {
+        $(this).css('opacity', '0').delay(index * 300).animate({ opacity: 1 }, 1000);
+      });
+
+      $('.challenge-content').click(function() {
+        $(this).css('font-weight', 'bold');
+        $(this).animate({ marginTop: '-20px' }, 'slow');
+
+        var originalText = $(this).find('h2').text();
+        var newText = originalText + " - Completed!";
+        $(this).find('h2').text(newText);
+      });
+    }); 
+  </script>
+  <footer>
+    <p>&copy; 2025 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>

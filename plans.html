@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Planner</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('images/4722384.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      max-width: 800px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h3 {
+      text-align: center;
+      color: #fff;
+      font-size: 28px;
+      animation: slideDown 1s ease-in-out;
+    }
+
+    label {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      transition: transform 0.3s;
+    }
+
+    input:focus, select:focus {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-primary {
+      background: #28a745;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Workout Planner</h3>
+    <form id="workoutForm">
+      <label>Exercise Name:</label>
+      <input id="exerciseName" type="text">
+      <label>Muscle Group:</label>
+      <select id="muscleGroup">
+        <option value="">Choose...</option>
+        <option value="chest">Chest</option>
+        <option value="back">Back</option>
+        <option value="legs">Legs</option>
+      </select>
+      <label>Sets:</label>
+      <input id="sets" type="number">
+      <label>Reps:</label>
+      <input id="reps" type="number">
+      <label>Weight:</label>
+      <input id="weight" type="number">
+      <button type="submit" class="btn btn-primary">Add Exercise</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Muscle Group</th>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Reps</th>
+          <th>Weight</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script>
+    $(document).ready(function() {
+      $('#workoutForm').submit(function(e) {
+        e.preventDefault();
+        var exercise = $('#exerciseName').val();
+        var muscle = $('#muscleGroup').val();
+        var sets = $('#sets').val();
+        var reps = $('#reps').val();
+        var weight = $('#weight').val();
+        $('tbody').append(`
+          <tr style="opacity: 0;">
+            <td>${muscle}</td>
+            <td>${exercise}</td>
+            <td>${sets}</td>
+            <td>${reps}</td>
+            <td>${weight}</td>
+            <td><button class="btn btn-danger remove">Remove</button></td>
+          </tr>
+        `);
+        $('tbody tr:last-child').animate({ opacity: 1 }, 500);
+        $('#workoutForm')[0].reset();
+      });
+      $(document).on('click', '.remove', function() {
+        $(this).closest('tr').fadeOut(500, function() {
+          $(this).remove();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

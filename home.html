@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Home</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      animation: slideDown 1s ease-in-out;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+      color: #ff9a9e;
+    }
+    
+    .banner {
+      text-align: center;
+      padding: 50px;
+      color: white;
+      background: url('https://source.unsplash.com/1600x900/?fitness,gym') no-repeat center/cover;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    .registration {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: bounceIn 1.5s ease-in-out;
+    }
+    
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .form-row {
+      margin-bottom: 15px;
+    }
+    
+    .form-row input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .form-row button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #ff6f61;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .form-row button:hover {
+      background: #e55b50;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="banner">
+      <h1>Welcome to Fitness Tracker</h1>
+      <p>Track your workouts, set goals, and achieve your fitness targets.</p>
+    </section>
+    <section class="registration">
+      <h2>Create an Account</h2>
+      <form action="dashboard.html">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <input type="checkbox" id="showPassword">
+          <label for="showPassword">Show Password</label>
+        </div>
+        <div class="form-row">
+          <button type="submit">Create Account</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script>
+    $(document).ready(function() {
+      console.log('Page loaded!');
+      $('#showPassword').change(function() {
+        var passwordInput = $('#password');
+        if ($(this).is(':checked')) {
+          passwordInput.attr('type', 'text');
+        } else {
+          passwordInput.attr('type', 'password');
+        }
+      });
+      $('input').blur(function() {
+        var inputValue = $(this).val();
+        if (inputValue.trim() === '') {
+          $(this).css('border-color', 'red');
+          alert('Please fill in all the required fields.');
+        }
+      });
+      $('input').focus(function() {
+        $(this).css('border-color', '');
+      });
+    });
+  </script>
+  <footer>
+    <p>&copy; 2025 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
